@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Detectar Tecla Presionada</title>
+</head>
+<body>
+<h1>Pulsa cualquier tecla</h1>
+<h5>Dentro o fuera del recuadro</h5>
+<label for="pass">Escriba la contraseña o mensaje oculto</label>
+<input type="password" name="pass" id="pass" placeholder="Password">
+<input type="button" value=" Mostrar mensaje" onclick="mostrarMensaje()">
+<div id="result"></div>
+<script>
+
+    let mensaje = ''
+    const result = document.getElementById('result')
+    function teclaPresionada(evento) {
+        if (evento.keyCode == 8 || evento.keyCode == 9 || evento.keyCode == 13) {
+            console.log('tecla especial')
+        } else {
+            mensaje += evento.key
+            console.log( `"Keycode:", ${evento.keyCode} `)
+            console.log( `"Key:", ${evento.key} `)
+            console.log( `"Código de la tecla:", ${evento.code} `)
+        }
+    }
+
+    function mostrarMensaje() {
+        result.innerHTML = ''
+        result.innerHTML = mensaje
+    }
+    window.addEventListener('keydown', teclaPresionada);
+</script>
+</body>
+</html>
